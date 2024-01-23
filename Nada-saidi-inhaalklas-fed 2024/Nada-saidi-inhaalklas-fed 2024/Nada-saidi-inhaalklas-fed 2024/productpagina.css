@@ -1,0 +1,810 @@
+/*fonts*/
+@font-face {
+    font-family: 'Oceanwide';
+    src: url("../fonts/OceanwideSemibold.otf") format("opentype");
+}
+
+/*Kleuren*/
+:root {
+    /* backgroundcolors */
+    --color-backgroundgeneral: #fff;
+    --color-backgroundfooter: #000;
+    --color-product-images: #EFEFEF;
+
+    /* font colors */
+    --color-hoofdtekst: #000;
+    --color-subtekst2: #808080;
+    --color-footertekst: #fff;
+    --color-subtekst: #fff;
+    --color-outwearsales: #ff0000;
+    --color-span: #1f02a2;
+
+    /* buttons */
+
+    --color-choozesize-button-background: #000;
+    --color-choozesize-button-tekst: #fff;
+    --color-choozesize-button-background-hover: #fff;
+    --color-choozesize-button-tekst-hover: #000;
+    --color-choozesize-button-border-hover: #000;
+
+    --color-button2background: #fff;
+    --color-button2tekst: #000;
+    --color-button2background-hover: #9a9a9a;
+    --color-button2tekst-hover: #fff;
+
+    --color-footerbutton-background-hover: #fff;
+    --color-footer-buttonborder: #fff;
+
+    --color-nav2buttons-background-hover: #000;
+    --color-nav2buttons-tekst-hover: #fff;
+    --color-nav2buttons-border: #000;
+
+    --color-input-background: #2f2f2f;
+    --color-input-tekst: #fff;
+    --color-submitknop-background-hover: #fff;
+    --color-submitknop-tekst-hover: #000;
+    --color-inputborder-hover: #fff;
+
+
+    --color-header-svgbutton: #fff;
+    --color-nav-svgbuttons: #000;
+
+    /* shadow */
+    --color-header-shadow: #0000001a;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* backgroundcolors */
+        --color-backgroundgeneral: #212429;
+        --color-backgroundfooter: #000;
+        --color-product-images: #EFEFEF;
+
+        /* font colors */
+        --color-hoofdtekst: #f3f3f3;
+        --color-subtekst2: #808080;
+        --color-footertekst: #fff;
+        --color-subtekst: #fff;
+        --color-outwearsales: #ff0000;
+        --color-span: #3d97cb;
+
+        /* buttons */
+
+        --color-choozesize-button-background: #eeeeee;
+        --color-choozesize-button-tekst: #393939;
+        --color-choozesize-button-background-hover: #000000;
+        --color-choozesize-button-tekst-hover: #ffffff;
+        --color-choozesize-button-border-hover: #fbfbfb;
+
+        --color-button2background: #ffffff7b;
+        --color-button2tekst: #000;
+        --color-button2background-hover: #4b4b4b;
+        --color-button2tekst-hover: #fff;
+
+        --color-footerbutton-background-hover: #fff;
+        --color-footer-buttonborder: #fff;
+
+        --color-nav2buttons-background-hover: #f7f7f7;
+        --color-nav2buttons-tekst-hover: #272727;
+        --color-nav2buttons-border: #f2f2f2;
+
+        --color-input-background: #2f2f2f;
+        --color-input-tekst: #fff;
+        --color-submitknop-background-hover: #fff;
+        --color-submitknop-tekst-hover: #000;
+        --color-inputborder-hover: #fff;
+
+
+        --color-header-svgbutton: #fff;
+        --color-nav-svgbuttons: #e8e8e8;
+
+        /* shadow */
+        --color-header-shadow: #ffffff60;
+    }
+
+    main>section:nth-of-type(2) svg {
+        filter: invert(1);
+    }
+}
+
+/* ALGEMENE STYLING */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* https://css-tricks.com/inclusively-hidden/ */
+.sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+
+body {
+    margin: 0;
+    font-family: 'Oceanwide', 'sans-serif';
+    color: var(--color-hoofdtekst);
+    background-color: var(--color-backgroundgeneral);
+}
+
+button {
+    font-family: inherit;
+    font-weight: lighter;
+}
+
+
+/* STYLING HEADER */
+header {
+    display: flex;
+    padding: 1em;
+    position: fixed;
+    width: 100%;
+    background-color: transparent;
+    z-index: 100;
+    height: 7vh;
+}
+
+header.scrolled {
+    background-color: var(--color-backgroundgeneral);
+    box-shadow: 0px 0px 10px var(--color-header-shadow);
+}
+
+header>a:first-of-type {
+    color: var(--color-subtekst);
+}
+
+header>a:first-of-type.scrolled {
+    color: var(--color-hoofdtekst);
+}
+
+
+header a:first-of-type {
+    margin-right: auto
+}
+
+header svg {
+    height: 2em;
+    width: 1.8em;
+    aspect-ratio: 1/1;
+}
+
+
+
+header>a:first-of-type svg {
+    width: 10em;
+}
+
+header>button {
+    background-color: transparent;
+    border: none;
+    color: var(--color-header-svgbutton);
+    margin-left: .5em;
+}
+
+header>button.scrolled {
+    color: var(--color-hoofdtekst);
+}
+
+
+
+
+
+/* NAVIGATIE STYLING (IN HAMBURGERMENU) */
+
+html.menuOpen {
+    overflow: hidden;
+}
+
+header nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    min-height: 100vh;
+    background-color: var(--color-backgroundgeneral);
+    translate: 0% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    inset: 0 0 0 15%;
+    transform: translateX(100%);
+    transition: .1s;
+}
+
+header nav.open {
+    transform: translateX(0%);
+    transition: .3s;
+}
+
+/* styling van het kruisje */
+header nav>button:first-of-type {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    background-color: transparent;
+    border: none;
+}
+
+header nav button img {
+    width: 2em;
+}
+
+/* lijst hoofdmenu men, woman, etc. */
+header nav ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2em;
+}
+
+header nav ul:first-of-type {
+    margin-top: 2.2em;
+}
+
+header nav li {
+    list-style: none;
+    margin-top: 2em;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+
+}
+
+header nav li:last-of-type p {
+    color: var(--color-outwearsales);
+}
+
+header nav li a svg {
+    width: .5em;
+    margin-right: 1em;
+}
+
+header nav li a svg:hover {
+    transform: scale(1.3);
+    transition: .5s;
+}
+
+header nav ul p {
+    font-size: 1.5em;
+    margin-right: auto;
+}
+
+/* klein submenu met log in, faq, etc. */
+header nav ul:nth-of-type(2) {
+    justify-content: end;
+    align-items: flex-end;
+    margin-right: 1em;
+}
+
+header nav ul:nth-of-type(2) a {
+    list-style-type: none;
+    color: var(--color-hoofdtekst);
+    text-decoration: none;
+}
+
+header nav ul:nth-of-type(2) a:hover {
+    text-decoration: underline;
+}
+
+header nav ul a {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    text-decoration: none;
+    color: var(--color-hoofdtekst);
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+
+/* styling van de 2 knoppen onderaan in de nav */
+header nav section {
+    display: flex;
+    place-content: center;
+    gap: .2em;
+    margin-bottom: 1em;
+}
+
+header nav section button {
+    background-color: transparent;
+    padding: .1em 2.2em;
+    font-family: inherit;
+    border: 1px var(--color-nav2buttons-border) solid;
+    border-radius: 3em;
+    font-size: 1.3em;
+    height: 3em;
+    display: flex;
+    align-items: center;
+    color: var(--color-hoofdtekst);
+}
+
+header nav section button:hover {
+    background-color: var(--color-nav2buttons-background-hover);
+    color: var(--color-nav2buttons-tekst-hover);
+}
+
+header nav section button img {
+    width: 1.2em;
+}
+
+svg {
+    width: 7px;
+    height: 12px;
+}
+
+
+
+/* MAIN STYLING */
+main>section:first-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+main>section:first-of-type h1 {
+    font-size: 1.3em;
+}
+
+main>section:first-of-type ul {
+    order: -2;
+    background-color: var(--color-product-images);
+}
+
+main>section:first-of-type ul li {
+    margin: 0;
+}
+
+main>section:first-of-type ul img {
+    width: 100%;
+}
+
+main>section:first-of-type>p:first-of-type {
+    order: -1;
+    color: var(--color-subtekst2);
+    text-transform: uppercase;
+}
+
+main>section:first-of-type>p:nth-of-type(3) {
+    margin: 0 1em;
+}
+
+main>section:first-of-type>p:nth-of-type(4) {
+    margin: .5em 0;
+}
+
+main>section:first-of-type>p:nth-of-type(5) {
+    font-size: .85em;
+}
+
+main>section:first-of-type {
+    text-align: center;
+}
+
+main>section:first-of-type section {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    margin: 0 1em;
+    gap: .5em;
+}
+
+main>section:first-of-type section button:first-of-type {
+    grid-column: 1 / 3;
+    background-color: var(--color-choozesize-button-background);
+    color: var(--color-choozesize-button-tekst);
+    padding: 1em;
+    border-radius: 10em;
+    font-size: inherit;
+}
+
+main>section:first-of-type section button:first-of-type:hover {
+    background-color: var(--color-choozesize-button-background-hover);
+    color: var(--color-choozesize-button-tekst-hover);
+    border: var(--color-choozesize-button-border-hover) solid 1px;
+    transition: .5s;
+}
+
+main>section:first-of-type section button:nth-of-type(2),
+main>section:first-of-type section button:nth-of-type(3) {
+    background-color: var(--color-button2background);
+    border: #adadad .5px solid;
+    padding: 1em;
+    border-radius: 10em;
+    color: var(--color-button2tekst);
+}
+
+main>section:first-of-type section button:nth-of-type(2):hover,
+main>section:first-of-type section button:nth-of-type(3):hover {
+    background-color: var(--color-button2background-hover);
+    color: var(--color-button2tekst-hover);
+    transition: .5s;
+}
+
+main>section:first-of-type section img {
+    width: 2em;
+}
+
+
+
+
+
+main>section:nth-of-type(2) {
+    margin: 2.5em 1em;
+}
+
+main>section:nth-of-type(2) ul {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+main>section:nth-of-type(2) ul li {
+    list-style-type: none;
+    border-top: #adadad .5px solid;
+    padding: 1.5em 1em;
+}
+
+main>section:nth-of-type(2) ul li p {
+    font-size: .8em;
+}
+
+main>section:nth-of-type(2) svg {
+    width: 2em;
+    height: 2em;
+}
+
+
+
+main>section:nth-of-type(3) img {
+    width: 100%;
+}
+
+main>section:nth-of-type(3) ul {
+    background-color: var(--color-product-images);
+}
+
+
+main>section:nth-of-type(4) {
+    margin: 2em 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+main>section:nth-of-type(4) summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+main>section:nth-of-type(4) summary::after {
+    content: "";
+    display: grid;
+    place-content: center;
+    width: .8em;
+    aspect-ratio: 1;
+
+    transition: .3s;
+
+    border-radius: 50%;
+
+    background-image:
+        linear-gradient(var(--color-hoofdtekst) 0 0),
+        linear-gradient(var(--color-hoofdtekst) 0 0);
+
+    background-size:
+        1.25em .15em,
+        .15em 1.25em;
+    background-repeat:
+        no-repeat;
+    background-position:
+        center;
+}
+
+main>section:nth-of-type(4) details[open] summary::after {
+    rotate: 45deg;
+}
+
+
+main>section:nth-of-type(4) details {
+    border-bottom: #adadad .5px solid;
+    padding-bottom: 1em;
+}
+
+main>section:nth-of-type(4) details:nth-of-type(2) ul li {
+    list-style-type: none;
+}
+
+main>section:nth-of-type(4) details:nth-of-type(2) span:not(p span) {
+    color: var(--color-span);
+}
+
+main>section:nth-of-type(4) details:nth-of-type(2) p span {
+    text-decoration: underline;
+}
+
+main>section:nth-of-type(4) details:nth-of-type(3) ul {
+    margin: 0 1em
+}
+
+main>section:nth-of-type(4) details:nth-of-type(3) span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+main>section:nth-of-type(4) details p {
+    margin-bottom: 1em;
+}
+
+main>section:nth-of-type(4) p,
+main>section:nth-of-type(4) ul {
+    font-size: .9em;
+}
+
+
+
+
+
+
+
+
+
+/* STYLING FOOTER */
+footer {
+    background-color: var(--color-backgroundfooter);
+    color: var(--color-footertekst);
+    padding: 2em 1em 1em 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+footer h2 {
+    margin-bottom: 1em;
+}
+
+footer>p:first-of-type,
+footer>p:nth-of-type(2) {
+    margin-bottom: 1.5em;
+}
+
+
+footer form>section:first-of-type {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    align-items: center;
+}
+
+footer form>section:first-of-type section {
+    display: flex;
+    align-items: baseline;
+
+}
+
+footer form>section:first-of-type section input {
+    margin-right: .5em;
+}
+
+
+footer form>section:nth-of-type(2) {
+    margin: 1em 0;
+    display: grid;
+    grid-template-columns: 80% 1fr;
+}
+
+footer input {
+    background-color: var(--color-input-background);
+    color: var(--color-input-tekst);
+    padding: 1em;
+    border-radius: 10em;
+    border: none;
+    border: var(--color-input-background) 1px solid;
+}
+
+footer form>section:nth-of-type(2) input:nth-of-type(1):hover {
+    border: var(--color-inputborder-hover) 1px solid;
+}
+
+footer form>section:nth-of-type(2) input:nth-of-type(2):hover {
+    color: var(--color-submitknop-tekst-hover);
+    background-color: var(--color-submitknop-background-hover);
+}
+
+
+footer label {
+    font-size: .9em;
+    cursor: pointer;
+}
+
+/* Code van Sanne's codepen (bron staat in de bronnenlijst) */
+summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+summary::after {
+    content: "";
+    display: grid;
+    place-content: center;
+    width: .8em;
+    aspect-ratio: 1;
+    transition: .3s;
+    border-radius: 50%;
+
+    background-image:
+        linear-gradient(var(--color-footertekst) 0 0),
+        linear-gradient(var(--color-footertekst) 0 0);
+
+    background-size:
+        1.25em .15em,
+        .15em 1.25em;
+    background-repeat:
+        no-repeat;
+    background-position:
+        center;
+}
+
+details[open] summary::after {
+    rotate: 45deg;
+}
+
+/*  */
+
+
+footer a {
+    text-decoration: none;
+    color: var(--color-footertekst);
+}
+
+footer>section:first-of-type a:hover {
+    text-decoration: underline;
+}
+
+footer>section {
+    margin: 2em 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+footer>section ul {
+    margin-bottom: 2.5em;
+}
+
+footer>section li {
+    list-style-type: none;
+    margin: .8em 0;
+}
+
+footer>section li a {
+    color: var(--color-subtekst2);
+}
+
+
+
+footer nav:first-of-type {
+    margin: 2em 0;
+}
+
+footer nav:first-of-type ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+footer nav:first-of-type ul li {
+    list-style-type: none;
+}
+
+footer nav:first-of-type ul li a {
+    color: var(--color-subtekst2);
+}
+
+footer nav:first-of-type ul li a:hover {
+    text-decoration: underline;
+}
+
+footer>button:first-of-type {
+    background-color: transparent;
+    padding: 2em 0em;
+    width: 14em;
+    margin: 3em 0;
+    font-family: inherit;
+    border: 1px var(--color-footer-buttonborder) solid;
+    border-radius: 3em;
+    height: 3em;
+    display: flex;
+    align-items: center;
+    display: flex;
+    place-content: center;
+}
+
+footer>button:first-of-type:hover {
+    background-color: var(--color-footerbutton-background-hover);
+    transition: .5s;
+}
+
+footer>button:first-of-type img {
+    width: 1.6em;
+}
+
+footer>p:nth-of-type(3),
+footer>p:nth-of-type(4) {
+    font-size: .75em;
+    color: var(--color-subtekst2);
+    text-align: center;
+}
+
+footer nav:nth-of-type(2) {
+    display: flex;
+    place-content: center;
+    margin: 2em 0;
+}
+
+footer nav:nth-of-type(2) ul {
+    display: flex;
+    gap: 1.5em;
+}
+
+footer nav:nth-of-type(2) ul li {
+    list-style-type: none;
+}
+
+footer nav:nth-of-type(2) ul li a svg {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+footer nav:nth-of-type(2) ul li a svg:hover {
+    transform: scale(1.4);
+    transition: .5s;
+}
+
+footer>button:last-of-type {
+    background-color: transparent;
+    color: var(--color-footertekst);
+    border: none;
+}
+
+footer>button:last-of-type svg {
+    width: 1em;
+    height: 1em;
+}
+
+
+
+
+
+
+/* scrollbar stylen (bron staat in de bronnenlijst) */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
